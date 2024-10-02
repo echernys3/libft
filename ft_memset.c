@@ -1,14 +1,25 @@
 #include "libft.h"
-//size_t à ajouter dans header
-void	*ft_memset(void *ptr, int x, size_t n)
+
+void	*ft_memset(void *s, int x, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 	unsigned char	*dest;
 
 	i = 0;
-	dest = (unsigned char *)ptr;
+	dest = (unsigned char *)s;
 	while (i < n)
 		dest[i++] = (unsigned char)x;
-	ptr = (void *)dest;
-	return (ptr);
+	return (s);
 }
+
+// #include <stdio.h>
+// int main() 
+// { 
+//     char str[50] = "GeeksForGeeks is for programming geeks."; 
+//     printf("\nBefore memset(): %s\n", str); 
+  
+//     ft_memset(str + 13, '.', 8*sizeof(char)); 
+  
+//     printf("After memset():  %s", str); 
+//     return 0; 
+// } 
