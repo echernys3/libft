@@ -1,14 +1,13 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void *calloc(size_t nmemb, size_t size)
+void	*calloc(size_t nmemb, size_t size)
 {
-	void *ptr;
+	void	*ptr;
+
 	if (!nmemb || !size)
-	{
 		return (NULL);
-	}
-	if (nmemb > SIZE_MAX/size) // j'ai le droit au SIZE_MAX????? + division pour eviter le overflow en multipliant
+	if (nmemb > SIZE_MAX / size) // j'ai le droit au SIZE_MAX????? + division pour eviter le overflow en multipliant
 		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (!(ptr))

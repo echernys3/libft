@@ -11,15 +11,14 @@ void	*ft_memset(void *s, int x, size_t n)
 		dest[i++] = (unsigned char)x;
 	return (s);
 }
-
 // #include <stdio.h>
 // int main() 
 // { 
 //     char str[50] = "GeeksForGeeks is for programming geeks."; 
-//     printf("\nBefore memset(): %s\n", str); 
-  
-//     ft_memset(str + 13, '.', 8*sizeof(char)); 
-  
+//     printf("\nBefore memset(): %s\n", str);
+// 
+// 	ft_memset(str + 13, '.', 8*sizeof(char)); 
+// 
 //     printf("After memset():  %s", str); 
 //     return 0; 
 // } 

@@ -3,23 +3,20 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	unsigned char	*to;
+	size_t				i;
+	unsigned char		*to;
 	const unsigned char	*from;
 
 	if (!dest || !src)
-		return NULL;
+		return (NULL);
 	i = 0;
 	to = (unsigned char *)dest;
 	from = (const unsigned char *)src;
 	if (to < from)
 	{
 		i = 0;
-		while (i < n)
-		{
+		while (i++ < n)
 			to[i] = from[i];
-			i++;
-		}
 	}
 	else
 	{
@@ -32,16 +29,16 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
+// 
 // int main() 
 // {
 // 	char src[] = "mitochondria are the powerhouses of cells";
 // 	char dest[213];
-
+// 
 // 	printf("\nBefore:   %s\n", src);
-
+// 
 // 	ft_memmove(dest, src, 42*sizeof(char)); 
-
+// 
 // 	printf("After:    %s", dest); 
 // 	return 0;
 // }
