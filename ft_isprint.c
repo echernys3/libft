@@ -2,7 +2,7 @@
 
 int	ft_isprint(int c)
 {
-	if (!(ft_iscntrl(c)))
+	if (c >= 32 && c < 127)
 		return (1);
 	return (0);
 }
