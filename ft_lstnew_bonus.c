@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:36:49 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 15:10:44 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:54:07 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	newnode->content = content;
 	newnode->next = NULL;
-	return (newlist);
+	return (newnode);
 }

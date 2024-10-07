@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:37:18 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 15:47:27 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:33:13 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char **spcalloc(const char *s, char c, char **tab)
 	tab = malloc(sizeof(char*) * (wordscount + 1));
 	if (!tab)
 		return (NULL);
+	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
@@ -54,7 +55,7 @@ char	**ft_split(char const *s, char c)
 
 	tab = NULL;
 	tab = spcalloc(s, c, tab);
-	if (!tab)
+	if (!*tab)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -81,12 +82,14 @@ char	**ft_split(char const *s, char c)
 		{
 			buffer[j] = '\0';
 			tab[wordscount] = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
-			if (tab[wordscount])
+			if (!(*tab[wordscount]))
+			{
 				free(tab);
 				return (NULL);
+			}
 			ft_strlcpy(tab[wordscount], buffer, ft_strlen(buffer));
 		}
 		tab[wordscount + 1] = NULL;
-		return (tab);
 	}
+	return (tab);
 }

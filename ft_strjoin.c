@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:37:29 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 12:43:40 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:27:15 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*newstr;
 	size_t	i;
-	size_t	j;
 	size_t	tot_len;
 
 	tot_len = ft_strlen(s1) + ft_strlen(s2);
