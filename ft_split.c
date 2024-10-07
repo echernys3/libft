@@ -6,27 +6,21 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:37:18 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 12:37:19 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:47:27 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
+char **spcalloc(const char *s, char c, char **tab)
 {
 	int	i;
-	int	j;
 	int	guard_i;
-	int	s_len;
-	int	*wordscount;
-	char	buffer[10000];
-	char	**tab;
-
+	int	wordscount;
+	
 	i = 0;
-	j = 0;
 	guard_i = 0;
-
-	*wordscount = 0;
+	wordscount = 0;
 	while (i < ft_strlen(s))
 	{
 		while (i < ft_strlen(s))
@@ -43,20 +37,37 @@ char	**ft_split(char const *s, char c)
 			i++;
 		}
 		if (i > guard_i)
-			*wordscount = *wordscount + 1;
+			wordscount++;
 	}
-	tab = malloc(sizeof(char*) * *wordscount + 1);
+	tab = malloc(sizeof(char*) * (wordscount + 1));
+	if (!tab)
+		return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int	i;
+	int	j;
+	int wordscount;
+	char	buffer[10000];
+	char	**tab;
+
+	tab = NULL;
+	tab = spcalloc(s, c, tab);
+	if (!tab)
+		return (NULL);
 	i = 0;
+	j = 0;
 	wordscount = 0;
 	while (i < ft_strlen(s))
 	{
-		while (i < s_len)
+		while (i < ft_strlen(s))
 		{
 			if (s[i] != c)
 				break;
 			i++;
 		}
-		*wordscount = *wordscount + 1;
+		wordscount++;
 		j = 0;
 		while (i < ft_strlen(s))
 		{
@@ -70,14 +81,12 @@ char	**ft_split(char const *s, char c)
 		{
 			buffer[j] = '\0';
 			tab[wordscount] = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
+			if (tab[wordscount])
+				free(tab);
+				return (NULL);
 			ft_strlcpy(tab[wordscount], buffer, ft_strlen(buffer));
 		}
+		tab[wordscount + 1] = NULL;
 		return (tab);
 	}
 }
-	// s1 = malloc(sizeof(char) * splt + 1);
-	// if (!(s1))
-	// 	return (NULL);
-	// s2 = malloc(sizeof(char) * (s_len - splt + 1));
-	// if (!(s2))
-	// 	return (NULL);

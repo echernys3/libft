@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:36:29 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 12:51:02 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:15:36 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*ft_itoa(int n)
 	str = malloc(sizeof(char) * (str_len + 1));
 	if (!(str))
 		return (NULL);
+	str[str_len--] = '\0';
 	if (n < 0)
 	{
 		str[0] = '-';
@@ -51,12 +52,11 @@ char	*ft_itoa(int n)
 	}
 	while (num > 0)
 	{
-		str[--str_len] = (num % 10) + '0';
+		str[str_len--] = (num % 10) + '0';
 		num /= 10;
 	}
 	return (str);
 }
-// str[str_len--] = '\0';
 // 
 // #include <stdio.h>
 // 
