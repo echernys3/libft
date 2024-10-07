@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:38:36 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 12:59:12 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:59:33 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*calloc(size_t nmemb, size_t size);
 
 char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2)paco ;
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -62,5 +62,15 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstmap(t_list **lst, void *(*f)(void *), void *(*del)(void *));
+t_list	*ft_listnew(void *content);
+int		ft_lstsize(t_list *lst);
 
 #endif
