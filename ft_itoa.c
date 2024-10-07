@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 12:36:29 by echernys          #+#    #+#             */
+/*   Updated: 2024/10/07 12:51:02 by echernys         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
 static size_t	numlen(long num)
 {
-	size_t str_len;
+	size_t	str_len;
 
 	str_len = 0;
 	if (num < 0)
@@ -16,7 +28,6 @@ static size_t	numlen(long num)
 		num /= 10;
 		str_len++;
 	}
-	// str_len++;
 	return (str_len);
 }
 

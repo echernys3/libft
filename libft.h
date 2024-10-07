@@ -1,26 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 12:38:36 by echernys          #+#    #+#             */
+/*   Updated: 2024/10/07 12:59:12 by echernys         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
-#define LIBFT_H
+# define LIBFT_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
-	void 			*content;
+	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
 
 void	ft_bzero(void *s, size_t n);
-int ft_toupper(int c);
-int ft_tolower(int c);
-int	ft_atoi(const char *nptr);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_atoi(const char *nptr);
 
 int		ft_strlen(const char *c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
@@ -40,7 +52,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*calloc(size_t nmemb, size_t size);
 
 char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2)paco ;
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
