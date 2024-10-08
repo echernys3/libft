@@ -13,24 +13,20 @@
 // #include <stdio.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static char	*ft_movedat(unsigned char *to, unsigned const char *from, size_t n)
 {
 	size_t				i;
-	unsigned char		*to;
-	const unsigned char	*from;
 
-	if (!dest || !src)
-		return (NULL);
 	i = 0;
-	to = (unsigned char *)dest;
-	from = (const unsigned char *)src;
-	if (to < from)
+	if (to < from && n != 0)
 	{
-		i = 0;
-		while (i++ < n)
+		while (i < n)
+		{
 			to[i] = from[i];
+			i++;
+		}
 	}
-	else
+	else if (to > from && n != 0)
 	{
 		i = n;
 		while (i > 0)
@@ -39,6 +35,19 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i--;
 		}
 	}
+	return ((char *)to);
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char		*to;
+	const unsigned char	*from;
+
+	if (!dest || !src)
+		return (NULL);
+	to = (unsigned char *)dest;
+	from = (const unsigned char *)src;
+	ft_movedat(to, from, n);
 	return (dest);
 }
 // 
