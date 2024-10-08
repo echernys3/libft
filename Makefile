@@ -29,7 +29,7 @@ bonus: $(BONUS_OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $^
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ) *.ghc
+	rm -f $(OBJ) $(BONUS_OBJ) *.gch
 
 fclean: clean
 	rm -f $(NAME)

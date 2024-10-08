@@ -6,7 +6,7 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:36:54 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 17:27:04 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:53:30 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	char	*ptr;
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	ptr = (char *)s;

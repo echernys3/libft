@@ -6,90 +6,83 @@
 /*   By: echernys <echernys@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:37:18 by echernys          #+#    #+#             */
-/*   Updated: 2024/10/07 17:33:13 by echernys         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:53:12 by echernys         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **spcalloc(const char *s, char c, char **tab)
+void	freer(char **tab, int wordscount)
 {
-	int	i;
-	int	guard_i;
-	int	wordscount;
-	
-	i = 0;
-	guard_i = 0;
-	wordscount = 0;
-	while (i < ft_strlen(s))
+	int	k;
+
+	k = 0;
+	while (k < wordscount)
 	{
-		while (i < ft_strlen(s))
-		{
-			if (s[i] != c)
-				break;
-			i++;
-		}
-		guard_i = i;
-		while (i < ft_strlen(s))
-		{
-			if (s[i] == c)
-				break;
-			i++;
-		}
-		if (i > guard_i)
-			wordscount++;
+		free(tab[k]);
+		k++;
 	}
-	tab = malloc(sizeof(char*) * (wordscount + 1));
+	free(tab);
+}
+
+char	**spcalloc(const char *s, char c)
+{
+	int		i;
+	int		wordscount;
+	char	**tab;
+
+	i = 0;
+	wordscount = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] != c)
+			i++;
+		if (s[i] && s[i] == c)
+		{
+			wordscount++;
+			while (s[i] && s[i] == c)
+				i++;
+		}
+	}
+	tab = malloc(sizeof(char *) * (wordscount + 1));
 	if (!tab)
 		return (NULL);
+	tab[wordscount] = NULL;
 	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int wordscount;
-	char	buffer[10000];
+	int		i;
+	int		j;
+	int		wordscount;
 	char	**tab;
 
-	tab = NULL;
-	tab = spcalloc(s, c, tab);
-	if (!*tab)
-		return (NULL);
 	i = 0;
 	j = 0;
 	wordscount = 0;
-	while (i < ft_strlen(s))
+	tab = spcalloc(s, c);
+	if (!s || !tab)
+		return (NULL);
+	while (s[i])
 	{
-		while (i < ft_strlen(s))
-		{
-			if (s[i] != c)
-				break;
+		while (s[i] == c)
 			i++;
-		}
-		wordscount++;
-		j = 0;
-		while (i < ft_strlen(s))
+		if (s[i])
 		{
-			if (s[i] == c)
-				break;
-			buffer[j] = s[i];
-			j++;
-			i++;
-		}
-		if (j > 0)
-		{
-			buffer[j] = '\0';
-			tab[wordscount] = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
-			if (!(*tab[wordscount]))
+			j = 0;
+			while (s[i + j] && s[i + j] != c)
+				j++;
+			tab[wordscount] = malloc(sizeof(char) * (j + 1));
+			if (!(tab[wordscount]))
 			{
-				free(tab);
+				freer(tab, wordscount);
 				return (NULL);
 			}
-			ft_strlcpy(tab[wordscount], buffer, ft_strlen(buffer));
+			ft_strlcpy(tab[wordscount], &s[i], j + 1);
+			wordscount++;
+			i += j;
 		}
-		tab[wordscount + 1] = NULL;
 	}
 	return (tab);
 }
